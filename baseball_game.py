@@ -288,10 +288,10 @@ def main():
         print("Random Number is : ", random_number)
         # ===Modify codes below=============
         # 위의 코드를 포함하여 자유로운 수정이 가능함
-        user_input = input('Input guess number :')
+        user_input = input('Input guess number : ')
         while not(is_validated_number(user_input)):
-            print('Wrong Input, Input again')
-            user_input = input('Input guess number :')
+            user_input = input('Wrong Input, Input again\n\
+                    Input guess number : ')
         
         strikes_and_ball = get_strikes_or_ball(user_input, random_number)
             
