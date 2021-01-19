@@ -305,6 +305,9 @@ def main():
             strikes_and_ball = get_strikes_or_ball(user_input, random_number)
             print('Strikes : {0} , Balls : {1}'
                     .format(strikes_and_ball[0], strikes_and_ball[1]))
+        
+        if user_input == '0':
+            break
 
         while True:
             one_more_answer = input('You win, one_more(Y/N)?') 
