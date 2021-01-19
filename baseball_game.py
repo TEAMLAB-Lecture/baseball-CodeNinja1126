@@ -196,7 +196,7 @@ def get_strikes_or_ball(user_input_number, random_number):
     for i in range(3):
         if user_input_number[i] == random_number[i]:
             result[0] += 1
-        else:
+        elif random_number.count(user_input_number[i]) > 0:
             result[1] += 1
 
     # ==================================
@@ -280,37 +280,42 @@ def is_no(one_more_input):
 
 def main():
     one_more_answer = 'y'
+    print("Play Baseball")
     while is_yes(one_more_answer):
         
-        print("Play Baseball")
         user_input = 999
         random_number = str(get_not_duplicated_three_digit_number())
         print("Random Number is : ", random_number)
         # ===Modify codes below=============
         # 위의 코드를 포함하여 자유로운 수정이 가능함
-        user_input = input('Input guess number : ')
-        while not(is_validated_number(user_input)):
-            print('Wrong Input, Input again')
-            user_input = input('Input guess number : ')
-        
-        strikes_and_ball = get_strikes_or_ball(user_input, random_number)
+
+        strikes_and_ball = [0, 0]
             
         while strikes_and_ball[0] < 3:
+            while True:
+                user_input = input('Input guess number : ')
+                if is_validated_number(user_input) or user_input == '0':
+                    break
+                else:
+                    print('Wrong Input, Input again')
+            
+            if user_input == '0':
+                break
+
+            strikes_and_ball = get_strikes_or_ball(user_input, random_number)
             print('Strikes : {0} , Balls : {1}'
                     .format(strikes_and_ball[0], strikes_and_ball[1]))
-            
-            user_input = input('Input guess number : ')
-            while not(is_validated_number(user_input)):
-                print('Wrong Input, Input again')
-                user_input = input('Input guess number : ')
-            
-            strikes_and_ball = get_strikes_or_ball(user_input, random_number)
         
-        one_more_answer = input('You win, one more(Y/N)?')
-        while not(is_yes(one_more_answer)) and not(is_no(one_more_answer)):
-            print('Wrong Input, Input again')
+        if user_input == '0':
+            break
+
+        while True:
             one_more_answer = input('You win, one_more(Y/N)?') 
 
+            if is_yes(one_more_answer) or is_no(one_more_answer):
+                break
+            else:
+                print('Wrong Input, Input again')
     # ==================================
     print("Thank you for using this program")
     print("End of the Game")
