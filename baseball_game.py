@@ -196,7 +196,7 @@ def get_strikes_or_ball(user_input_number, random_number):
     for i in range(3):
         if user_input_number[i] == random_number[i]:
             result[0] += 1
-        else:
+        elif random_number.count(user_input_number[i]) > 0:
             result[1] += 1
 
     # ==================================
