@@ -280,9 +280,9 @@ def is_no(one_more_input):
 
 def main():
     one_more_answer = 'y'
+    print("Play Baseball")
     while is_yes(one_more_answer):
         
-        print("Play Baseball")
         user_input = 999
         random_number = str(get_not_duplicated_three_digit_number())
         print("Random Number is : ", random_number)
